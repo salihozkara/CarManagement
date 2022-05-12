@@ -1,4 +1,3 @@
-# Requirements
 # Car Transaction Workflow
 
 - The car save with plate.
