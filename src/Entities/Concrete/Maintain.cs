@@ -12,7 +12,7 @@ namespace Entities.Concrete
     {
         public int MaintainTypeId { get; set; }
 
-        public string MaintainValue { get; set; }
+        public string Value { get; set; }
 
         public List<Transaction> Transactions { get; set; }
     }

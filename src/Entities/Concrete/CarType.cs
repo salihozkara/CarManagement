@@ -10,7 +10,7 @@ namespace Entities.Concrete
 {
     public class CarType : BaseEntity
     {
-        public string CarTypeName { get; set; }
+        public string Name { get; set; }
 
         public List<Car> Cars { get;set; }
     }
