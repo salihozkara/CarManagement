@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Car
+    public class Car : BaseEntity
     {
-        [Key]
-        public int CarID { get; set; }
-
+       
         public string Plate { get; set; }
 
-        public int CarTypeID { get; set; }
+        public int CarTypeId { get; set; }
 
         public string CustomerPhone { get; set; }
 
