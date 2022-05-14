@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Transaction
+    public class Transaction : BaseEntity
     {
-        [Key]
-        public int TransactionID { get; set; }
-
         public int CarID { get; set; }
 
         public int MaintainID { get; set; }
