@@ -13,7 +13,7 @@ namespace Entities.Concrete
        
         public string Plate { get; set; }
 
-        public int CarTypeID { get; set; }
+        public int CarTypeId { get; set; }
 
         public string CustomerPhone { get; set; }
 

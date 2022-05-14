@@ -10,9 +10,9 @@ namespace Entities.Concrete
 {
     public class Transaction : BaseEntity
     {
-        public int CarID { get; set; }
+        public int CarId { get; set; }
 
-        public int MaintainID { get; set; }
+        public int MaintainId { get; set; }
 
         public int LastOdo { get; set; }
 

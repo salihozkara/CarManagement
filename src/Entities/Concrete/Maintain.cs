@@ -10,7 +10,7 @@ namespace Entities.Concrete
 {
     public class Maintain : BaseEntity
     {
-        public int MaintainTypeID { get; set; }
+        public int MaintainTypeId { get; set; }
 
         public string MaintainValue { get; set; }
 
