@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormUI.Forms;
-
-public partial class MainWindowForm : Form
+namespace WinFormUI.Forms
 {
-    public MainWindowForm()
+    public partial class MainWindowForm : Form
     {
-        InitializeComponent();
+        public MainWindowForm()
+        {
+            InitializeComponent();
+        }
     }
 }
-
