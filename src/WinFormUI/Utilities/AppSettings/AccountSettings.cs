@@ -7,22 +7,31 @@ using System.Threading.Tasks;
 
 namespace WinFormUI.Utilities.AppSettings
 {
-    public class AccountSettings:ApplicationSettingsBase
+    public class AccountSettings : ApplicationSettingsBase
     {
-        [ApplicationScopedSetting]
+        [UserScopedSetting]
         public string Username
         {
             get => (string)this[nameof(Username)];
             set => this[nameof(Username)] = value;
         }
-
-        [ApplicationScopedSetting]
+        
+        [UserScopedSetting]
+        [DefaultSettingValue("false")]
+        public bool IsAuthenticated
+        {
+            get => (bool)this[nameof(IsAuthenticated)];
+            set => this[nameof(IsAuthenticated)] = value;
+        }
+        
+        [UserScopedSetting]
         public byte[] PasswordHash
         {
             get => (byte[])this[nameof(PasswordHash)];
             set => this[nameof(PasswordHash)] = value;
         }
-        [ApplicationScopedSetting]
+        
+        [UserScopedSetting]
         public byte[] PasswordSalt
         {
             get => (byte[])this[nameof(PasswordSalt)];
