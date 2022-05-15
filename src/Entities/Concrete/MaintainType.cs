@@ -10,6 +10,6 @@ namespace Entities.Concrete
 {
     public class MaintainType : BaseEntity
     {
-        public string MaintainTypeName { get; set; }
+        public string Name { get; set; }
     }
 }

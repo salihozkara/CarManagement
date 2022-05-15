@@ -14,7 +14,7 @@ namespace Entities.Concrete
 
         public int MaintainId { get; set; }
 
-        public int LastOdo { get; set; }
+        public string LastOdo { get; set; }
 
         public DateTime LastDate { get; set; }
 

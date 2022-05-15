@@ -12,6 +12,7 @@ namespace Entities.Concrete
     {
        
         public string Plate { get; set; }
+        public string Year { get; set; }
 
         public int CarTypeId { get; set; }
 
