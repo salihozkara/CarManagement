@@ -9,9 +9,9 @@ namespace WinFormUI.Forms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loginBtn_Click(object sender, EventArgs e)
         {
-            var result=AuthHelper.Login(textBox1.Text, textBox2.Text,out var message);
+            var result=AuthHelper.Login(usernameLbl.Text, passwordTxtBox.Text,out var message);
             if (result)
             {
                 this.DialogResult = DialogResult.Yes;
@@ -22,5 +22,12 @@ namespace WinFormUI.Forms
                 MessageBox.Show(message);
             }
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            usernameLbl.Text = AuthHelper.GetUserName();
+        }
+
+        
     }
 }

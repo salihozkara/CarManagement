@@ -1,4 +1,7 @@
-﻿using WinFormUI.Utilities.Authentication;
+﻿using Entities.Concrete;
+using System.Linq;
+using WinFormUI.UserControls;
+using WinFormUI.Utilities.Authentication;
 
 namespace WinFormUI.Forms
 {
@@ -8,22 +11,229 @@ namespace WinFormUI.Forms
         {
             InitializeComponent();
         }
-
         private void MainWindowForm_Load(object sender, EventArgs e)
         {
 
-            this.Hide();
-            var result = new LoginForm().ShowDialog();
-            if (result == DialogResult.Yes)
+
+
+            //this.Hide();
+            //var result = new LoginForm().ShowDialog();
+            //if (result == DialogResult.Yes)
+            //{
+            //    this.Show();
+            //    this.Text = "Welcome " + AuthHelper.GetUserName();
+            //}
+            //else
+            //{
+            //    Application.Exit();
+            //}
+
+            yearsCmb.DataSource = Enumerable.Range(1985, DateTime.Today.Year - 1985).ToList().ConvertAll(x => x.ToString());
+            yearsCmb.SelectedItem = null;
+            plateCmbFill();
+            maintainCmbFill();
+
+
+            transactionFill();
+        }
+        private void maintainCmbFill()
+        {
+            maintainTypes.Add(new MaintainType() { Name = "Oil Change" });
+            maintainTypes.Add(new MaintainType() { Name = "Tire Rotation" });
+            maintainTypes.Add(new MaintainType() { Name = "Transmission Flush" });
+            maintainTypes.Add(new MaintainType() { Name = "Brake Flush" });
+            maintainTypes.Add(new MaintainType() { Name = "Air Filter Change" });
+
+            maintains.Add(new Maintain() { Value = "Castrol Magnetic", MaintainType = maintainTypes[0] });
+            maintains.Add(new Maintain() { Value = "Castrol Non-Magnetic", MaintainType = maintainTypes[0] });
+            maintains.Add(new Maintain() { Value = "Michelin", MaintainType = maintainTypes[1] });
+            maintains.Add(new Maintain() { Value = "Michelin Non-Magnetic", MaintainType = maintainTypes[1] });
+            maintains.Add(new Maintain() { Value = "Michelin Non-Magnetic", MaintainType = maintainTypes[2] });
+
+            maintainCmb.DataSource = maintainTypes;
+
+            maintainCmb.DisplayMember = "Name";
+            maintainCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            maintainCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
+            maintainCmb.SelectedItem = null;
+
+            maintainValueCmb.DisplayMember = "Value";
+            maintainValueCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            maintainValueCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+        List<Maintain> maintains = new List<Maintain>();
+        List<MaintainType> maintainTypes = new List<MaintainType>();
+        List<Car> cars = new();
+        List<CarType> carTypes = new();
+        private void plateCmbFill()
+        {
+
+            //carTypes.Add(new CarType());
+            carTypes.Add(new CarType { Name = "Sedan" });
+            carTypes.Add(new CarType { Name = "Hatchback" });
+            carTypes.Add(new CarType { Name = "Coupe" });
+            carTypes.Add(new CarType { Name = "SUV" });
+            carTypes.Add(new CarType { Name = "Pickup" });
+            carTypes.Add(new CarType { Name = "Van" });
+
+            //cars.Add(new Car() { CarType = carTypes[0] });
+            cars.Add(new Car() { Plate = "AA-123-AA", CarType = carTypes[4], Year = "2019" });
+            cars.Add(new Car() { Plate = "BB-123-BB", CarType = carTypes[1], Year = "2011" });
+            cars.Add(new Car() { Plate = "CC-123-CC", CarType = carTypes[2], Year = "2018" });
+            cars.Add(new Car() { Plate = "DD-123-DD", CarType = carTypes[3], Year = "2017" });
+
+
+            plateCmb.DataSource = new BindingSource(cars, null);
+            plateCmb.DisplayMember = "Plate";
+            plateCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            plateCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+
+
+            carTypesCmb.DataSource = new BindingSource(carTypes, null);
+
+            carTypesCmb.DisplayMember = "Name";
+
+
+
+
+
+
+            plateCmb.SelectedItem = null;
+
+            carTypesCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+
+            carTypesCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            // yearTxt.DataBindings.Add("Text", plateCmb, "SelectedItem.Year");
+
+        }
+
+
+
+
+        private void transactionFill()
+        {
+            var transactions = new List<Transaction>();
+            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[0]});
+            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[1]});
+            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[2] });
+
+            
+            foreach (var transaction in transactions)
             {
-                this.Show();
-                this.Text = "Welcome " + AuthHelper.GetUserName();
+                addTransaction(transaction);
+            }
+
+        }
+        private void addTransaction(Transaction transaction)
+        {
+            var control = new TransactionUserControl();
+            control.Controls["maintainTxt"].Text = transaction.Maintain.MaintainType.Name;
+            control.Controls["maintainValueTxt"].Text = transaction.Maintain.Value;
+            control.Controls["odoTxt"].Text = transaction.LastOdo;
+            ((DateTimePicker)control.Controls["lastTimePicker"]).Value = transaction.LastDate;
+            control.Controls["noteTxt"].Text = transaction.Note;
+
+            flowLayoutPanel1.Controls.Add(control);
+            
+        }
+        private void plateCmb_TextChanged(object sender, EventArgs e)
+        {
+            var car = plateCmb.Items.Cast<Car>().FirstOrDefault(c => c.Plate == plateCmb.Text);
+            if (car != null)
+            {
+                //var selectedCar = ((Car)plateCmb.SelectedItem);
+                plateCmb.SelectedItem = car;
+                plateCmb.SelectionStart = plateCmb.Text.Length;
+                carTypesCmb.SelectedItem = car.CarType;
+                carTypesCmb.Enabled = false;
+                yearsCmb.SelectedItem = car.Year;
+                yearsCmb.Enabled = false;
+                customerPhoneTxt.Text = car.CustomerPhone;
+
+                
+
             }
             else
             {
-                Application.Exit();
+                plateCmb.SelectedItem = null;
+                carTypesCmb.SelectedItem = null;
+                carTypesCmb.Enabled = true;
+                yearsCmb.SelectedItem = null;
+                yearsCmb.Enabled = true;
+                customerPhoneTxt.Text = string.Empty;
             }
 
+        }
+
+
+        private void plateCmb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+        private void cmb_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox cmb = (sender as ComboBox)!;
+            var obj = cmb.Items.OfType<object>().FirstOrDefault(c => c.GetType().GetProperty(cmb.DisplayMember)?.GetValue(c)?.ToString() == cmb.Text);
+            if (obj != null)
+            {
+                cmb.SelectedItem = obj;
+                cmb.SelectionStart = Text.Length;
+            }
+            else
+            {
+                cmb.SelectedItem = null;
+            }
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (plateCmb.SelectedItem is not Car car)
+            {
+                car = new Car
+                {
+                    CarType = carTypesCmb.SelectedItem as CarType ?? new CarType() { Name = carTypesCmb.Text },
+                    Plate = plateCmb.Text,
+                    Year = yearsCmb.SelectedItem as string ?? yearsCmb.Text,
+                    CustomerPhone = customerPhoneTxt.Text,
+                };
+            }
+            var transaction = new Transaction
+            {
+                Car = car,
+                Maintain = maintainValueCmb.SelectedItem as Maintain ?? new Maintain() { Value = maintainValueCmb.Text, MaintainType = maintainCmb.SelectedItem as MaintainType ?? new MaintainType() { Name = maintainCmb.Text } },
+                LastDate = dateTimePicker1.Value,
+                LastOdo = odoTxt.Text,
+                Note = noteTxt.Text
+            };
+
+            addTransaction(transaction);
+            //transactions.Add(transaction);
+            //plateCmb.SelectedItem = null;
+            //maintainValueCmb.SelectedItem = null;
+            //maintainValueCmb.Text = string.Empty;
+            //priceTxt.Text = string.Empty;
+            //descriptionTxt.Text = string.Empty;
+            //plateCmb.Focus();
+
+        }
+
+        private void maintainCmb_TextChanged(object sender, EventArgs e)
+        {
+            var obj = maintainCmb.Items.OfType<MaintainType>().FirstOrDefault(c => c.Name.ToLower() == maintainCmb.Text.ToLower());
+            if (obj != null)
+            {
+                maintainCmb.SelectedItem = obj;
+                maintainCmb.SelectionStart = Text.Length;
+                maintainValueCmb.DataSource = maintains.Where(m => m.MaintainType == maintainCmb.SelectedItem as MaintainType).ToList();
+                
+            }
+            else
+            {
+                maintainCmb.SelectedItem = null;
+                maintainValueCmb.DataSource = null;
+                
+            }
         }
     }
 }
