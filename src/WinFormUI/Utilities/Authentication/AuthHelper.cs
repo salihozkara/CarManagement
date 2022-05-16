@@ -38,29 +38,11 @@ namespace WinFormUI.Utilities.Authentication
             AccountSettings accountSettings = new();
             return accountSettings.Username;
         }
-        public static bool IsAuthenticated()
-        {
-            AccountSettings accountSettings = new();
-            return accountSettings.IsAuthenticated;
-        }
-        public static void Logout()
-        {
-            AccountSettings accountSettings = new();
-            accountSettings.IsAuthenticated = false;
-        }
         public static bool Login(string username, string password,out string message)
         {
            
             AccountSettings accountSettings = new();
-            if (accountSettings.PasswordHash == null)
-            {
-                accountSettings.Username = "admin";
-                HashingHelper.CreatePasswordHash("admin", out byte[] passwordHash, out byte[] passwordSalt);
-                accountSettings.PasswordHash = passwordHash;
-                accountSettings.PasswordSalt = passwordSalt;
-                accountSettings.IsAuthenticated = false;
-                accountSettings.Save();
-            }
+            
             if (username != accountSettings.Username)
             {
                 message="Username is incorrect";
@@ -68,7 +50,6 @@ namespace WinFormUI.Utilities.Authentication
             }
             if (HashingHelper.VerifyPasswordHash(password, accountSettings.PasswordHash, accountSettings.PasswordSalt))
             {
-                accountSettings.IsAuthenticated = true;
                 message = "success";
                 return true;
             }
