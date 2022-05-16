@@ -29,9 +29,9 @@ namespace Business.Concrete
             return result.ToList();
         }
 
-        public Task<Maintain> GetMaintainByIdAsync()
+        public async Task<Maintain> GetMaintainByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _maintainDal.GetAsync(x => x.Id == id);
         }
 
         public async Task UpdateMaintainAsync(Maintain maintain)

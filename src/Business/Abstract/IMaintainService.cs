@@ -15,7 +15,7 @@ namespace Business.Abstract
 
         Task UpdateMaintainAsync(Maintain maintain);
 
-        Task<Maintain> GetMaintainByIdAsync();
+        Task<Maintain> GetMaintainByIdAsync(int id);
 
     }
 }
