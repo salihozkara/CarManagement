@@ -33,43 +33,40 @@
             this.maintainValueTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lastTimePicker = new System.Windows.Forms.TextBox();
-            this.noteTxt = new System.Windows.Forms.TextBox();
+            this.noteTxt = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // odoTxt
             // 
             this.odoTxt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.odoTxt.Enabled = false;
-            this.odoTxt.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.odoTxt.Location = new System.Drawing.Point(595, 17);
-            this.odoTxt.Margin = new System.Windows.Forms.Padding(4);
+            this.odoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.odoTxt.Location = new System.Drawing.Point(476, 14);
             this.odoTxt.Name = "odoTxt";
             this.odoTxt.ReadOnly = true;
-            this.odoTxt.Size = new System.Drawing.Size(162, 33);
+            this.odoTxt.Size = new System.Drawing.Size(130, 28);
             this.odoTxt.TabIndex = 21;
             // 
             // maintainTxt
             // 
             this.maintainTxt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.maintainTxt.Enabled = false;
-            this.maintainTxt.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maintainTxt.Location = new System.Drawing.Point(15, 16);
-            this.maintainTxt.Margin = new System.Windows.Forms.Padding(4);
+            this.maintainTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maintainTxt.Location = new System.Drawing.Point(12, 13);
             this.maintainTxt.Name = "maintainTxt";
             this.maintainTxt.ReadOnly = true;
-            this.maintainTxt.Size = new System.Drawing.Size(276, 33);
+            this.maintainTxt.Size = new System.Drawing.Size(222, 28);
             this.maintainTxt.TabIndex = 28;
             // 
             // maintainValueTxt
             // 
             this.maintainValueTxt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.maintainValueTxt.Enabled = false;
-            this.maintainValueTxt.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maintainValueTxt.Location = new System.Drawing.Point(299, 17);
-            this.maintainValueTxt.Margin = new System.Windows.Forms.Padding(4);
+            this.maintainValueTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maintainValueTxt.Location = new System.Drawing.Point(239, 14);
             this.maintainValueTxt.Name = "maintainValueTxt";
             this.maintainValueTxt.ReadOnly = true;
-            this.maintainValueTxt.Size = new System.Drawing.Size(288, 33);
+            this.maintainValueTxt.Size = new System.Drawing.Size(231, 28);
             this.maintainValueTxt.TabIndex = 29;
             // 
             // label1
@@ -78,37 +75,41 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(15, 184);
+            this.label1.Location = new System.Drawing.Point(12, 147);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 25);
+            this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 31;
             // 
             // lastTimePicker
             // 
             this.lastTimePicker.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lastTimePicker.Enabled = false;
-            this.lastTimePicker.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lastTimePicker.Location = new System.Drawing.Point(765, 17);
-            this.lastTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.lastTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lastTimePicker.Location = new System.Drawing.Point(612, 14);
             this.lastTimePicker.Name = "lastTimePicker";
             this.lastTimePicker.ReadOnly = true;
-            this.lastTimePicker.Size = new System.Drawing.Size(244, 33);
+            this.lastTimePicker.Size = new System.Drawing.Size(213, 28);
             this.lastTimePicker.TabIndex = 32;
             // 
             // noteTxt
             // 
+            this.noteTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.noteTxt.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.noteTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.noteTxt.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.noteTxt.Location = new System.Drawing.Point(15, 57);
-            this.noteTxt.Multiline = true;
+            this.noteTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.noteTxt.Location = new System.Drawing.Point(12, 46);
+            this.noteTxt.Margin = new System.Windows.Forms.Padding(2);
             this.noteTxt.Name = "noteTxt";
-            this.noteTxt.Size = new System.Drawing.Size(994, 137);
+            this.noteTxt.ReadOnly = true;
+            this.noteTxt.Size = new System.Drawing.Size(811, 110);
             this.noteTxt.TabIndex = 33;
+            this.noteTxt.Text = "";
             // 
             // TransactionUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.noteTxt);
             this.Controls.Add(this.lastTimePicker);
@@ -116,9 +117,8 @@
             this.Controls.Add(this.maintainValueTxt);
             this.Controls.Add(this.maintainTxt);
             this.Controls.Add(this.odoTxt);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TransactionUserControl";
-            this.Size = new System.Drawing.Size(1020, 211);
+            this.Size = new System.Drawing.Size(825, 169);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,6 +130,6 @@
         private TextBox maintainValueTxt;
         private Label label1;
         private TextBox lastTimePicker;
-        private TextBox noteTxt;
+        private RichTextBox noteTxt;
     }
 }

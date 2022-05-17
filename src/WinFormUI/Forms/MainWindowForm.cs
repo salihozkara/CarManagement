@@ -10,6 +10,16 @@ namespace WinFormUI.Forms
         public MainWindowForm()
         {
             InitializeComponent();
+            headerPanelLocationChange();
+            a(splitContainer2.Panel1);
+            splitContainer1.Panel1MinSize = headerPanel.Height;
+        }
+        private void headerPanelLocationChange()
+        {
+            headerPanel.Location = new Point(
+   splitContainer1.Panel1.Width / 2 - headerPanel.Size.Width / 2,
+   splitContainer1.Panel1.Height / 2 - headerPanel.Size.Height / 2);
+            headerPanel.Anchor = AnchorStyles.None;
         }
         private void MainWindowForm_Load(object sender, EventArgs e)
         {
@@ -112,11 +122,11 @@ namespace WinFormUI.Forms
         private void transactionFill()
         {
             var transactions = new List<Transaction>();
-            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[0]});
-            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[1]});
+            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[0] });
+            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[1] });
             transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[2] });
 
-            
+
             foreach (var transaction in transactions)
             {
                 addTransaction(transaction);
@@ -128,14 +138,14 @@ namespace WinFormUI.Forms
             var control = new TransactionUserControl();
             control.Controls["maintainTxt"].Text = transaction.Maintain.MaintainType.Name;
             control.Controls["maintainValueTxt"].Text = transaction.Maintain.Value;
-            control.Controls["odoTxt"].Text = "12000";
+            control.Controls["odoTxt"].Text = transaction.LastOdo;
             control.Controls["lastTimePicker"].Text = transaction.LastDate.ToLongDateString();
-            control.Controls["noteTxt"].Text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus sagittis odio in vehicula. Proin nec arcu at nisi vehicula dignissim eu et orci. Nulla facilisi. Nam rhoncus, enim sit amet faucibus eleifend, mi velit pulvinar turpis, eget porttitor felis tortor nec magna. Maecenas id arcu luctus, consequat metus feugiat, luctus enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus iaculis suscipit ipsum. Maecenas erat odio, porttitor vitae convallis eget, iaculis vel orci. Cras aliquet quam vitae cursus facilisis. Fusce porttitor condimentum leo, posuere condimentum mauris tempus eu. Sed eu pulvinar lorem. Fusce luctus, ex ac feugiat commodo, purus neque pretium metus, ac volutpat nisl diam a ex.
+            control.Controls["noteTxt"].Text = String.IsNullOrEmpty(transaction.Note) ? @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus sagittis odio in vehicula. Proin nec arcu at nisi vehicula dignissim eu et orci. Nulla facilisi. Nam rhoncus, enim sit amet faucibus eleifend, mi velit pulvinar turpis, eget porttitor felis tortor nec magna. Maecenas id arcu luctus, consequat metus feugiat, luctus enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus iaculis suscipit ipsum. Maecenas erat odio, porttitor vitae convallis eget, iaculis vel orci. Cras aliquet quam vitae cursus facilisis. Fusce porttitor condimentum leo, posuere condimentum mauris tempus eu. Sed eu pulvinar lorem. Fusce luctus, ex ac feugiat commodo, purus neque pretium metus, ac volutpat nisl diam a ex.
 
-Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas mattis dui vel magna aliquam lacinia. Suspendisse mollis sem dictum diam eleifend gravida. Etiam fermentum mauris non nisi laoreet, vitae pharetra ipsum pulvinar. Ut a malesuada diam. Fusce sit amet massa lobortis, euismod odio laoreet, tincidunt eros. Praesent nunc elit, lobortis nec sapien ac, tincidunt mollis lorem. Vestibulum id porttitor quam. Donec lacinia placerat neque a blandit. Maecenas consectetur mauris et urna blandit faucibus. Quisque rutrum leo interdum dolor pellentesque, sit amet aliquet justo condimentum. Curabitur nec augue fringilla, egestas mauris ac, eleifend nunc.";
-
+Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas mattis dui vel magna aliquam lacinia. Suspendisse mollis sem dictum diam eleifend gravida. Etiam fermentum mauris non nisi laoreet, vitae pharetra ipsum pulvinar. Ut a malesuada diam. Fusce sit amet massa lobortis, euismod odio laoreet, tincidunt eros. Praesent nunc elit, lobortis nec sapien ac, tincidunt mollis lorem. Vestibulum id porttitor quam. Donec lacinia placerat neque a blandit. Maecenas consectetur mauris et urna blandit faucibus. Quisque rutrum leo interdum dolor pellentesque, sit amet aliquet justo condimentum. Curabitur nec augue fringilla, egestas mauris ac, eleifend nunc." : transaction.Note;
+            control.TabIndex =(int)(DateTime.Now.Ticks- transaction.LastDate.Ticks);
             flowLayoutPanel1.Controls.Add(control);
-            
+
         }
         private void plateCmb_TextChanged(object sender, EventArgs e)
         {
@@ -151,7 +161,7 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
                 yearsCmb.Enabled = false;
                 customerPhoneTxt.Text = car.CustomerPhone;
 
-                
+
 
             }
             else
@@ -185,7 +195,7 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
                 cmb.SelectedItem = null;
             }
         }
-        private void button1_Click_1(object sender, EventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e)
         {
             if (plateCmb.SelectedItem is not Car car)
             {
@@ -202,10 +212,12 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
                 Car = car,
                 Maintain = maintainValueCmb.SelectedItem as Maintain ?? new Maintain() { Value = maintainValueCmb.Text, MaintainType = maintainCmb.SelectedItem as MaintainType ?? new MaintainType() { Name = maintainCmb.Text } },
                 LastOdo = odoTxt.Text,
-                Note = noteTxt.Text
+                Note = noteTxt.Text,
+                LastDate = DateTime.Now,
             };
 
             addTransaction(transaction);
+            FormClear();
             //transactions.Add(transaction);
             //plateCmb.SelectedItem = null;
             //maintainValueCmb.SelectedItem = null;
@@ -215,7 +227,22 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
             //plateCmb.Focus();
 
         }
-
+        private void FormClear()
+        {
+            plateCmb.SelectedItem = null;
+            carTypesCmb.SelectedItem = null;
+            carTypesCmb.Text = string.Empty;
+            yearsCmb.SelectedItem = null;
+            yearsCmb.Text = string.Empty;
+            customerPhoneTxt.Text = string.Empty;
+            maintainCmb.SelectedItem = null;
+            maintainCmb.Text = string.Empty;
+            maintainValueCmb.SelectedItem = null;
+            maintainValueCmb.Text = string.Empty;
+            odoTxt.Text = string.Empty;
+            noteTxt.Text = string.Empty;
+            plateCmb.Focus();
+        }
         private void maintainCmb_TextChanged(object sender, EventArgs e)
         {
             var obj = maintainCmb.Items.OfType<MaintainType>().FirstOrDefault(c => c.Name.ToLower() == maintainCmb.Text.ToLower());
@@ -224,14 +251,36 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
                 maintainCmb.SelectedItem = obj;
                 maintainCmb.SelectionStart = Text.Length;
                 maintainValueCmb.DataSource = maintains.Where(m => m.MaintainType == maintainCmb.SelectedItem as MaintainType).ToList();
-                
+
             }
             else
             {
                 maintainCmb.SelectedItem = null;
                 maintainValueCmb.DataSource = null;
-                
+
             }
+        }
+
+        private void MainWindowForm_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
+        {
+            headerPanelLocationChange();
+        }
+
+        private void splitContainer2_Panel1_SizeChanged(object sender, EventArgs e)
+        {
+            a(sender as Panel);
+        }
+        private void a(Panel panel)
+        {
+                      maintainFormPanel.Location = new Point(
+  panel.Width / 2 - maintainFormPanel.Size.Width / 2,
+  panel.Height / 2 - maintainFormPanel.Size.Height / 2);
+            maintainFormPanel.Anchor = AnchorStyles.None;
         }
     }
 }
