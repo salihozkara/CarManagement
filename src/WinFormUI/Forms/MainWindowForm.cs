@@ -13,9 +13,6 @@ namespace WinFormUI.Forms
         }
         private void MainWindowForm_Load(object sender, EventArgs e)
         {
-
-
-
             //this.Hide();
             //var result = new LoginForm().ShowDialog();
             //if (result == DialogResult.Yes)
@@ -131,9 +128,11 @@ namespace WinFormUI.Forms
             var control = new TransactionUserControl();
             control.Controls["maintainTxt"].Text = transaction.Maintain.MaintainType.Name;
             control.Controls["maintainValueTxt"].Text = transaction.Maintain.Value;
-            control.Controls["odoTxt"].Text = transaction.LastOdo;
-            ((DateTimePicker)control.Controls["lastTimePicker"]).Value = transaction.LastDate;
-            control.Controls["noteTxt"].Text = transaction.Note;
+            control.Controls["odoTxt"].Text = "12000";
+            control.Controls["lastTimePicker"].Text = transaction.LastDate.ToLongDateString();
+            control.Controls["noteTxt"].Text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus sagittis odio in vehicula. Proin nec arcu at nisi vehicula dignissim eu et orci. Nulla facilisi. Nam rhoncus, enim sit amet faucibus eleifend, mi velit pulvinar turpis, eget porttitor felis tortor nec magna. Maecenas id arcu luctus, consequat metus feugiat, luctus enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus iaculis suscipit ipsum. Maecenas erat odio, porttitor vitae convallis eget, iaculis vel orci. Cras aliquet quam vitae cursus facilisis. Fusce porttitor condimentum leo, posuere condimentum mauris tempus eu. Sed eu pulvinar lorem. Fusce luctus, ex ac feugiat commodo, purus neque pretium metus, ac volutpat nisl diam a ex.
+
+Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas mattis dui vel magna aliquam lacinia. Suspendisse mollis sem dictum diam eleifend gravida. Etiam fermentum mauris non nisi laoreet, vitae pharetra ipsum pulvinar. Ut a malesuada diam. Fusce sit amet massa lobortis, euismod odio laoreet, tincidunt eros. Praesent nunc elit, lobortis nec sapien ac, tincidunt mollis lorem. Vestibulum id porttitor quam. Donec lacinia placerat neque a blandit. Maecenas consectetur mauris et urna blandit faucibus. Quisque rutrum leo interdum dolor pellentesque, sit amet aliquet justo condimentum. Curabitur nec augue fringilla, egestas mauris ac, eleifend nunc.";
 
             flowLayoutPanel1.Controls.Add(control);
             
@@ -202,7 +201,6 @@ namespace WinFormUI.Forms
             {
                 Car = car,
                 Maintain = maintainValueCmb.SelectedItem as Maintain ?? new Maintain() { Value = maintainValueCmb.Text, MaintainType = maintainCmb.SelectedItem as MaintainType ?? new MaintainType() { Name = maintainCmb.Text } },
-                LastDate = dateTimePicker1.Value,
                 LastOdo = odoTxt.Text,
                 Note = noteTxt.Text
             };
