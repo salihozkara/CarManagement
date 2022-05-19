@@ -28,7 +28,11 @@ namespace Business.Concrete
             var result = await _maintainDal.GetListAsync();
             return result.ToList();
         }
-
+        public async Task<List<Maintain>> GetMaintainsByMaintainTypeIdAsync(int maintainTypeId)
+        {
+            var result = await _maintainDal.GetListAsync(m => m.MaintainTypeId == maintainTypeId);
+            return result.ToList();
+        }
         public async Task<Maintain> GetMaintainByIdAsync(int id)
         {
             return await _maintainDal.GetAsync(x => x.Id == id);

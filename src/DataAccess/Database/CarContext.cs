@@ -8,11 +8,13 @@ public class CarContext: DbContext
 {
     public CarContext()
     {
+        var result = Database.EnsureCreated();
+        
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         //String interpolation to reach the right path
-        optionsBuilder.UseSqlite($"Data Source=../DataAccess/Database/carManagement.db");
+        optionsBuilder.UseSqlite($"Data Source=./carManagement.db");
     }
     
     public DbSet<Car> Cars { get; set; }

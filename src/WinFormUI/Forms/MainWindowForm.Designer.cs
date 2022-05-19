@@ -30,7 +30,6 @@ namespace WinFormUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.plateCmb = new System.Windows.Forms.ComboBox();
             this.customerPhoneTxt = new System.Windows.Forms.TextBox();
             this.carTypesCmb = new System.Windows.Forms.ComboBox();
@@ -48,13 +47,12 @@ namespace WinFormUI.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.maintainValueCmb = new System.Windows.Forms.ComboBox();
             this.noteTxt = new System.Windows.Forms.RichTextBox();
-            this.maintainCmb = new System.Windows.Forms.ComboBox();
+            this.maintainTypeCmb = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.odoTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,17 +63,20 @@ namespace WinFormUI.Forms
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.maintainFormPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // plateCmb
             // 
+            this.plateCmb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.plateCmb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.plateCmb.DisplayMember = "Plate";
             this.plateCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.plateCmb.FormattingEnabled = true;
             this.plateCmb.Location = new System.Drawing.Point(8, 33);
             this.plateCmb.Name = "plateCmb";
             this.plateCmb.Size = new System.Drawing.Size(135, 30);
             this.plateCmb.TabIndex = 0;
+            this.plateCmb.ValueMember = "Id";
             this.plateCmb.TextChanged += new System.EventHandler(this.plateCmb_TextChanged);
             this.plateCmb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.plateCmb_KeyPress);
             // 
@@ -89,6 +90,9 @@ namespace WinFormUI.Forms
             // 
             // carTypesCmb
             // 
+            this.carTypesCmb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.carTypesCmb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.carTypesCmb.DisplayMember = "Name";
             this.carTypesCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.carTypesCmb.FormattingEnabled = true;
             this.carTypesCmb.Location = new System.Drawing.Point(180, 33);
@@ -214,7 +218,7 @@ namespace WinFormUI.Forms
             this.maintainFormPanel.Controls.Add(this.label8);
             this.maintainFormPanel.Controls.Add(this.maintainValueCmb);
             this.maintainFormPanel.Controls.Add(this.noteTxt);
-            this.maintainFormPanel.Controls.Add(this.maintainCmb);
+            this.maintainFormPanel.Controls.Add(this.maintainTypeCmb);
             this.maintainFormPanel.Controls.Add(this.label6);
             this.maintainFormPanel.Controls.Add(this.odoTxt);
             this.maintainFormPanel.Controls.Add(this.label5);
@@ -256,12 +260,16 @@ namespace WinFormUI.Forms
             // 
             // maintainValueCmb
             // 
+            this.maintainValueCmb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.maintainValueCmb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.maintainValueCmb.DisplayMember = "Value";
             this.maintainValueCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.maintainValueCmb.FormattingEnabled = true;
             this.maintainValueCmb.Location = new System.Drawing.Point(3, 125);
             this.maintainValueCmb.Name = "maintainValueCmb";
             this.maintainValueCmb.Size = new System.Drawing.Size(242, 30);
             this.maintainValueCmb.TabIndex = 5;
+            this.maintainValueCmb.ValueMember = "Id";
             this.maintainValueCmb.TextChanged += new System.EventHandler(this.cmb_TextChanged);
             // 
             // noteTxt
@@ -272,15 +280,18 @@ namespace WinFormUI.Forms
             this.noteTxt.TabIndex = 7;
             this.noteTxt.Text = "";
             // 
-            // maintainCmb
+            // maintainTypeCmb
             // 
-            this.maintainCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maintainCmb.FormattingEnabled = true;
-            this.maintainCmb.Location = new System.Drawing.Point(3, 48);
-            this.maintainCmb.Name = "maintainCmb";
-            this.maintainCmb.Size = new System.Drawing.Size(242, 30);
-            this.maintainCmb.TabIndex = 4;
-            this.maintainCmb.TextChanged += new System.EventHandler(this.maintainCmb_TextChanged);
+            this.maintainTypeCmb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.maintainTypeCmb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.maintainTypeCmb.DisplayMember = "Name";
+            this.maintainTypeCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maintainTypeCmb.FormattingEnabled = true;
+            this.maintainTypeCmb.Location = new System.Drawing.Point(3, 48);
+            this.maintainTypeCmb.Name = "maintainTypeCmb";
+            this.maintainTypeCmb.Size = new System.Drawing.Size(242, 30);
+            this.maintainTypeCmb.TabIndex = 4;
+            this.maintainTypeCmb.TextChanged += new System.EventHandler(this.maintainCmb_TextChanged);
             // 
             // label6
             // 
@@ -333,10 +344,6 @@ namespace WinFormUI.Forms
             this.flowLayoutPanel1.Size = new System.Drawing.Size(570, 489);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // transactionBindingSource
-            // 
-            this.transactionBindingSource.DataSource = typeof(Entities.Concrete.Transaction);
-            // 
             // MainWindowForm
             // 
             this.AcceptButton = this.saveBtn;
@@ -363,7 +370,6 @@ namespace WinFormUI.Forms
             this.splitContainer2.ResumeLayout(false);
             this.maintainFormPanel.ResumeLayout(false);
             this.maintainFormPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -385,11 +391,10 @@ namespace WinFormUI.Forms
         private Label label5;
         private Label label6;
         private Label label7;
-        private ComboBox maintainCmb;
+        private ComboBox maintainTypeCmb;
         private ComboBox maintainValueCmb;
         private RichTextBox noteTxt;
         private FlowLayoutPanel flowLayoutPanel1;
-        private BindingSource transactionBindingSource;
         private Label label8;
         private Label label1;
         private Panel headerPanel;
