@@ -28,5 +28,11 @@ namespace Business.Concrete
             var result = await _transactionDal.GetListAsync();
             return result.ToList();
         }
+        
+        public async Task<List<Transaction>> GetTransactionByCarIdAsync(int carId)
+        {
+            var result =await _transactionDal.GetListAsync(t => t.CarId == carId);
+            return result.ToList();
+        }
     }
 }

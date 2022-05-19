@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Business.Abstract;
+using Entities.Concrete;
 using System.Linq;
 using WinFormUI.UserControls;
 using WinFormUI.Utilities.Authentication;
@@ -7,8 +8,20 @@ namespace WinFormUI.Forms
 {
     public partial class MainWindowForm : Form
     {
-        public MainWindowForm()
+        private IMaintainService _maintainService;
+        private IMaintainTypeService _maintainTypeService;
+        private ICarService _carService;
+        private ICarTypeService _carTypeService;
+        private ITransactionService _transactionService;
+        public MainWindowForm(IMaintainService maintainService, IMaintainTypeService maintainTypeService, ICarService carService, ICarTypeService carTypeService, ITransactionService transactionService)
         {
+            
+            _maintainService = maintainService;
+            _maintainTypeService = maintainTypeService;
+            _carService = carService;
+            _carTypeService = carTypeService;
+            _transactionService = transactionService;
+        
             InitializeComponent();
             headerPanelLocationChange();
             a(splitContainer2.Panel1);
@@ -41,23 +54,23 @@ namespace WinFormUI.Forms
             maintainCmbFill();
 
 
-            transactionFill();
+            //transactionFill();
         }
         private void maintainCmbFill()
         {
-            maintainTypes.Add(new MaintainType() { Name = "Oil Change" });
-            maintainTypes.Add(new MaintainType() { Name = "Tire Rotation" });
-            maintainTypes.Add(new MaintainType() { Name = "Transmission Flush" });
-            maintainTypes.Add(new MaintainType() { Name = "Brake Flush" });
-            maintainTypes.Add(new MaintainType() { Name = "Air Filter Change" });
+            //maintainTypes.Add(new MaintainType() { Name = "Oil Change" });
+            //maintainTypes.Add(new MaintainType() { Name = "Tire Rotation" });
+            //maintainTypes.Add(new MaintainType() { Name = "Transmission Flush" });
+            //maintainTypes.Add(new MaintainType() { Name = "Brake Flush" });
+            //maintainTypes.Add(new MaintainType() { Name = "Air Filter Change" });
 
-            maintains.Add(new Maintain() { Value = "Castrol Magnetic", MaintainType = maintainTypes[0] });
-            maintains.Add(new Maintain() { Value = "Castrol Non-Magnetic", MaintainType = maintainTypes[0] });
-            maintains.Add(new Maintain() { Value = "Michelin", MaintainType = maintainTypes[1] });
-            maintains.Add(new Maintain() { Value = "Michelin Non-Magnetic", MaintainType = maintainTypes[1] });
-            maintains.Add(new Maintain() { Value = "Michelin Non-Magnetic", MaintainType = maintainTypes[2] });
+            //maintains.Add(new Maintain() { Value = "Castrol Magnetic", MaintainType = maintainTypes[0] });
+            //maintains.Add(new Maintain() { Value = "Castrol Non-Magnetic", MaintainType = maintainTypes[0] });
+            //maintains.Add(new Maintain() { Value = "Michelin", MaintainType = maintainTypes[1] });
+            //maintains.Add(new Maintain() { Value = "Michelin Non-Magnetic", MaintainType = maintainTypes[1] });
+            //maintains.Add(new Maintain() { Value = "Michelin Non-Magnetic", MaintainType = maintainTypes[2] });
 
-            maintainCmb.DataSource = maintainTypes;
+            maintainCmb.DataSource = _maintainTypeService.GetMaintainAsync().Result;
 
             maintainCmb.DisplayMember = "Name";
             maintainCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -75,29 +88,30 @@ namespace WinFormUI.Forms
         private void plateCmbFill()
         {
 
-            //carTypes.Add(new CarType());
-            carTypes.Add(new CarType { Name = "Sedan" });
-            carTypes.Add(new CarType { Name = "Hatchback" });
-            carTypes.Add(new CarType { Name = "Coupe" });
-            carTypes.Add(new CarType { Name = "SUV" });
-            carTypes.Add(new CarType { Name = "Pickup" });
-            carTypes.Add(new CarType { Name = "Van" });
+            ////carTypes.Add(new CarType());
+            //carTypes.Add(new CarType { Name = "Sedan" });
+            //carTypes.Add(new CarType { Name = "Hatchback" });
+            //carTypes.Add(new CarType { Name = "Coupe" });
+            //carTypes.Add(new CarType { Name = "SUV" });
+            //carTypes.Add(new CarType { Name = "Pickup" });
+            //carTypes.Add(new CarType { Name = "Van" });
 
-            //cars.Add(new Car() { CarType = carTypes[0] });
-            cars.Add(new Car() { Plate = "AA-123-AA", CarType = carTypes[4], Year = "2019" });
-            cars.Add(new Car() { Plate = "BB-123-BB", CarType = carTypes[1], Year = "2011" });
-            cars.Add(new Car() { Plate = "CC-123-CC", CarType = carTypes[2], Year = "2018" });
-            cars.Add(new Car() { Plate = "DD-123-DD", CarType = carTypes[3], Year = "2017" });
+            ////cars.Add(new Car() { CarType = carTypes[0] });
+            //cars.Add(new Car() { Plate = "AA-123-AA", CarType = carTypes[4], Year = "2019" });
+            //cars.Add(new Car() { Plate = "BB-123-BB", CarType = carTypes[1], Year = "2011" });
+            //cars.Add(new Car() { Plate = "CC-123-CC", CarType = carTypes[2], Year = "2018" });
+            //cars.Add(new Car() { Plate = "DD-123-DD", CarType = carTypes[3], Year = "2017" });
 
 
-            plateCmb.DataSource = new BindingSource(cars, null);
+            plateCmb.DataSource = _carService.GetCarAsync().Result;
             plateCmb.DisplayMember = "Plate";
+            plateCmb.ValueMember = "Id";
             plateCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             plateCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
 
 
 
-            carTypesCmb.DataSource = new BindingSource(carTypes, null);
+            carTypesCmb.DataSource = _carTypeService.GetCarTypeAsync().Result;
 
             carTypesCmb.DisplayMember = "Name";
 
@@ -121,17 +135,17 @@ namespace WinFormUI.Forms
 
         private void transactionFill()
         {
-            var transactions = new List<Transaction>();
-            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[0] });
-            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[1] });
-            transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[2] });
+            //var transactions = new List<Transaction>();
+            //transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[0] });
+            //transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[1] });
+            //transactions.Add(new Transaction() { LastDate = DateTime.Now, Car = cars[0], Maintain = maintains[2] });
 
-
-            foreach (var transaction in transactions)
+            //flowLayoutPanel1.Controls.Clear();
+            foreach (var transaction in _transactionService.GetTransactionByCarIdAsync((int)plateCmb.SelectedValue).Result)
             {
                 addTransaction(transaction);
             }
-
+            
         }
         private void addTransaction(Transaction transaction)
         {
@@ -160,7 +174,7 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
                 yearsCmb.SelectedItem = car.Year;
                 yearsCmb.Enabled = false;
                 customerPhoneTxt.Text = car.CustomerPhone;
-
+                transactionFill();
 
 
             }
@@ -172,6 +186,7 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
                 yearsCmb.SelectedItem = null;
                 yearsCmb.Enabled = true;
                 customerPhoneTxt.Text = string.Empty;
+                flowLayoutPanel1.Controls.Clear();
             }
 
         }
@@ -216,7 +231,9 @@ Curabitur lacinia velit convallis, hendrerit felis at, iaculis mauris. Maecenas 
                 LastDate = DateTime.Now,
             };
 
-            addTransaction(transaction);
+            
+            
+            _transactionService.AddTransactionAsync(transaction);
             FormClear();
             //transactions.Add(transaction);
             //plateCmb.SelectedItem = null;
