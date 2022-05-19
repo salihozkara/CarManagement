@@ -204,6 +204,7 @@ namespace WinFormUI.Forms
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel1);
+            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.splitContainer2.Size = new System.Drawing.Size(1019, 489);
             this.splitContainer2.SplitterDistance = 445;
             this.splitContainer2.TabIndex = 0;
@@ -269,7 +270,7 @@ namespace WinFormUI.Forms
             this.maintainValueCmb.Name = "maintainValueCmb";
             this.maintainValueCmb.Size = new System.Drawing.Size(242, 30);
             this.maintainValueCmb.TabIndex = 5;
-            this.maintainValueCmb.ValueMember = "Id";
+            //this.maintainValueCmb.ValueMember = "Id";
             this.maintainValueCmb.TextChanged += new System.EventHandler(this.cmb_TextChanged);
             // 
             // noteTxt
@@ -334,14 +335,13 @@ namespace WinFormUI.Forms
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 400, 3, 3);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(16);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(570, 489);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(550, 489);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // MainWindowForm

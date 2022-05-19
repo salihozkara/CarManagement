@@ -116,6 +116,7 @@ namespace WinFormUI.Forms
         private void addTransaction(Transaction transaction)
         {
             var control = new TransactionUserControl();
+            control.Size = new Size(flowLayoutPanel1.Width, control.Height);
             control.Controls["maintainTxt"].Text = transaction.Maintain.MaintainType.Name;
             control.Controls["maintainValueTxt"].Text = transaction.Maintain.Value;
             control.Controls["odoTxt"].Text = transaction.LastOdo;
@@ -241,7 +242,7 @@ namespace WinFormUI.Forms
             {
                 maintainTypeCmb.SelectedItem = obj;
                 maintainTypeCmb.SelectionStart = Text.Length;
-                maintainValueCmb.DataSource = maintainValueCmb.DataSource = _maintainService.GetMaintainsByMaintainTypeIdAsync(obj.Id).Result;
+                maintainValueCmb.DataSource = _maintainService.GetMaintainsByMaintainTypeIdAsync(obj.Id).Result;
 
             }
             else
