@@ -10,6 +10,7 @@ namespace Business.Abstract
     public interface IMaintainService
     {
         Task<List<Maintain>> GetMaintainAsync();
+        Task<List<Maintain>> GetMaintainsByMaintainTypeIdAsync(int maintainTypeId);
 
         Task AddMaintainAsync(Maintain maintain);
 

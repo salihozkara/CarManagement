@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,12 @@ namespace Business.Concrete
         public async Task<List<Transaction>> GetTransactionAsync()
         {
             var result = await _transactionDal.GetListAsync();
+            return result.ToList();
+        }
+        
+        public async Task<List<Transaction>> GetTransactionByCarIdAsync(int carId)
+        {
+            var result = await _transactionDal.GetListAsync(t => t.CarId == carId, include: t => t.Include(t=>t.Car).Include(t=>t.Maintain).Include(t=>t.Maintain.MaintainType));
             return result.ToList();
         }
     }

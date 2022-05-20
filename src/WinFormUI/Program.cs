@@ -1,3 +1,11 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess;
+using DataAccess.Abstract;
+using DataAccess.Concrete;
+using Microsoft.Extensions.DependencyInjection;
+using WinFormUI.Forms;
+
 namespace WinFormUI
 {
     internal static class Program
@@ -8,10 +16,40 @@ namespace WinFormUI
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Forms.MainWindowForm());
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            var services = new ServiceCollection();
+
+            ConfigureServices(services);
+
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                var mainWindowForm = serviceProvider.GetRequiredService<MainWindowForm>();
+                Application.Run(mainWindowForm);
+            }
+        }
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services
+                    .AddSingleton<ICarService, CarManager>()
+                    .AddSingleton<ICarTypeService, CarTypeManager>()
+                    .AddSingleton<IMaintainService, MaintainManager>()
+                    .AddSingleton<IMaintainTypeService, MaintainTypeManager>()
+                    .AddSingleton<ITransactionService, TransactionManager>();
+
+            services.AddTransient<MainWindowForm>();
+            
+            services
+                .AddSingleton<ICarDal,EfCarDal>()
+                .AddSingleton<ICarTypeDal, EfCarTypeDal>()
+                .AddSingleton<IMaintainDal, EfMaintainDal>()
+                .AddSingleton<IMaintainTypeDal, EfMaintainTypeDal>()
+                .AddSingleton<ITransactionDal, EfTransactionDal>();
+
+            services.AddDbContext<CarContext>();
+            
         }
     }
 }

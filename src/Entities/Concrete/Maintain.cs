@@ -15,5 +15,12 @@ namespace Entities.Concrete
         public string Value { get; set; }
 
         public List<Transaction> Transactions { get; set; }
+
+        public MaintainType MaintainType { get; set; }
+
+        override public string ToString()
+        {
+            return Value;
+        }
     }
 }
