@@ -20,9 +20,11 @@ Welcome to our Car Management Desktop Application. This manual will help you fin
 
 Note: You can download the application from Github. 
 
-
 ## Used Technologies
-Will be updated soon.
+- .Net 6
+- Entity Framework Core
+- SQLite
+- Windows Form
 
 ## Useful Links
 - [Project Requirements](docs/requirements.md)
