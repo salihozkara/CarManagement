@@ -13,5 +13,9 @@ namespace Entities.Concrete
         public string Name { get; set; }
 
         public List<Car> Cars { get;set; }
+        override public string ToString()
+        {
+            return Name;
+        }
     }
 }

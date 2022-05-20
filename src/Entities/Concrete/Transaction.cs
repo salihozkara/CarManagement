@@ -24,6 +24,10 @@ namespace Entities.Concrete
 
         public Maintain Maintain { get; set; }
 
+        override public string ToString()
+        {
+            return $"{Maintain.MaintainType} {Maintain.Value} {Car.Plate}";
+        }
 
     }
 }

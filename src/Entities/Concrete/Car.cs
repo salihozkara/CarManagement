@@ -22,5 +22,10 @@ namespace Entities.Concrete
 
         public CarType CarType { get; set; }
 
+        override public string ToString()
+        {
+            return $"{Plate} {Year} {CarType.Name}";
+        }
+
     }
 }
