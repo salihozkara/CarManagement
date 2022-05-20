@@ -38,17 +38,17 @@ namespace WinFormUI.Forms
         }
         private void MainWindowForm_Load(object sender, EventArgs e)
         {
-            //this.Hide();
-            //var result = new LoginForm().ShowDialog();
-            //if (result == DialogResult.Yes)
-            //{
-            //    this.Show();
-            //    this.Text = "Welcome " + AuthHelper.GetUserName();
-            //}
-            //else
-            //{
-            //    Application.Exit();
-            //}
+            this.Hide();
+            var result = new LoginForm().ShowDialog();
+            if (result == DialogResult.Yes)
+            {
+                this.Show();
+                this.Text = "Welcome " + AuthHelper.GetUserName();
+            }
+            else
+            {
+                Application.Exit();
+            }
 
             yearsCmb.DataSource = Enumerable.Range(1985, DateTime.Today.Year - 1985).ToList().ConvertAll(x => x.ToString());
             yearsCmb.SelectedItem = null;
