@@ -34,13 +34,13 @@ namespace WinFormUI.Forms
             this.customerPhoneTxt = new System.Windows.Forms.TextBox();
             this.carTypesCmb = new System.Windows.Forms.ComboBox();
             this.yearsCmb = new System.Windows.Forms.ComboBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerHeader = new System.Windows.Forms.SplitContainer();
             this.headerPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.plakaLbl = new System.Windows.Forms.Label();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerBody = new System.Windows.Forms.SplitContainer();
             this.maintainFormPanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -51,18 +51,21 @@ namespace WinFormUI.Forms
             this.label6 = new System.Windows.Forms.Label();
             this.odoTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.flowLayoutPanelTransaction = new System.Windows.Forms.FlowLayoutPanel();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHeader)).BeginInit();
+            this.splitContainerHeader.Panel1.SuspendLayout();
+            this.splitContainerHeader.Panel2.SuspendLayout();
+            this.splitContainerHeader.SuspendLayout();
             this.headerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBody)).BeginInit();
+            this.splitContainerBody.Panel1.SuspendLayout();
+            this.splitContainerBody.Panel2.SuspendLayout();
+            this.splitContainerBody.SuspendLayout();
             this.maintainFormPanel.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // plateCmb
@@ -112,25 +115,25 @@ namespace WinFormUI.Forms
             this.yearsCmb.Size = new System.Drawing.Size(94, 30);
             this.yearsCmb.TabIndex = 2;
             // 
-            // splitContainer1
+            // splitContainerHeader
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerHeader.IsSplitterFixed = true;
+            this.splitContainerHeader.Location = new System.Drawing.Point(0, 28);
+            this.splitContainerHeader.Name = "splitContainerHeader";
+            this.splitContainerHeader.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // splitContainerHeader.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.headerPanel);
-            this.splitContainer1.Panel1.SizeChanged += new System.EventHandler(this.splitContainer1_Panel1_SizeChanged);
+            this.splitContainerHeader.Panel1.Controls.Add(this.headerPanel);
+            this.splitContainerHeader.Panel1.SizeChanged += new System.EventHandler(this.splitContainer1_Panel1_SizeChanged);
             // 
-            // splitContainer1.Panel2
+            // splitContainerHeader.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1019, 582);
-            this.splitContainer1.SplitterDistance = 89;
-            this.splitContainer1.TabIndex = 7;
+            this.splitContainerHeader.Panel2.Controls.Add(this.splitContainerBody);
+            this.splitContainerHeader.Size = new System.Drawing.Size(1019, 554);
+            this.splitContainerHeader.SplitterDistance = 84;
+            this.splitContainerHeader.TabIndex = 7;
             // 
             // headerPanel
             // 
@@ -143,7 +146,7 @@ namespace WinFormUI.Forms
             this.headerPanel.Controls.Add(this.label2);
             this.headerPanel.Controls.Add(this.yearsCmb);
             this.headerPanel.Controls.Add(this.plakaLbl);
-            this.headerPanel.Location = new System.Drawing.Point(166, 3);
+            this.headerPanel.Location = new System.Drawing.Point(166, 1);
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(671, 68);
             this.headerPanel.TabIndex = 10;
@@ -188,32 +191,29 @@ namespace WinFormUI.Forms
             this.plakaLbl.TabIndex = 0;
             this.plakaLbl.Text = "Plaka";
             // 
-            // splitContainer2
+            // splitContainerBody
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainerBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerBody.IsSplitterFixed = true;
+            this.splitContainerBody.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerBody.Name = "splitContainerBody";
+            this.splitContainerBody.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer2.Panel1
+            // splitContainerBody.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.maintainFormPanel);
-            this.splitContainer2.Panel1.Controls.Add(this.label1);
-            this.splitContainer2.Panel1.SizeChanged += new System.EventHandler(this.splitContainer2_Panel1_SizeChanged);
+            this.splitContainerBody.Panel1.Controls.Add(this.maintainFormPanel);
+            this.splitContainerBody.Panel1.SizeChanged += new System.EventHandler(this.splitContainer2_Panel1_SizeChanged);
             // 
-            // splitContainer2.Panel2
+            // splitContainerBody.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel1);
-            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.splitContainer2.Size = new System.Drawing.Size(1019, 489);
-            this.splitContainer2.SplitterDistance = 445;
-            this.splitContainer2.TabIndex = 0;
+            this.splitContainerBody.Panel2.Controls.Add(this.flowLayoutPanelTransaction);
+            this.splitContainerBody.Size = new System.Drawing.Size(1019, 466);
+            this.splitContainerBody.SplitterDistance = 243;
+            this.splitContainerBody.TabIndex = 0;
             // 
             // maintainFormPanel
             // 
-            this.maintainFormPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.maintainFormPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.maintainFormPanel.Controls.Add(this.label7);
             this.maintainFormPanel.Controls.Add(this.saveBtn);
             this.maintainFormPanel.Controls.Add(this.label8);
@@ -223,16 +223,16 @@ namespace WinFormUI.Forms
             this.maintainFormPanel.Controls.Add(this.label6);
             this.maintainFormPanel.Controls.Add(this.odoTxt);
             this.maintainFormPanel.Controls.Add(this.label5);
-            this.maintainFormPanel.Location = new System.Drawing.Point(98, 16);
+            this.maintainFormPanel.Location = new System.Drawing.Point(12, 3);
             this.maintainFormPanel.Name = "maintainFormPanel";
-            this.maintainFormPanel.Size = new System.Drawing.Size(256, 461);
+            this.maintainFormPanel.Size = new System.Drawing.Size(995, 250);
             this.maintainFormPanel.TabIndex = 20;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(3, 21);
+            this.label7.Location = new System.Drawing.Point(19, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 26);
             this.label7.TabIndex = 10;
@@ -241,9 +241,9 @@ namespace WinFormUI.Forms
             // saveBtn
             // 
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.saveBtn.Location = new System.Drawing.Point(139, 419);
+            this.saveBtn.Location = new System.Drawing.Point(855, 36);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(106, 40);
+            this.saveBtn.Size = new System.Drawing.Size(106, 36);
             this.saveBtn.TabIndex = 8;
             this.saveBtn.Text = "Kaydet";
             this.saveBtn.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@ namespace WinFormUI.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(3, 241);
+            this.label8.Location = new System.Drawing.Point(3, 85);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 26);
             this.label8.TabIndex = 19;
@@ -266,18 +266,17 @@ namespace WinFormUI.Forms
             this.maintainValueCmb.DisplayMember = "Value";
             this.maintainValueCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.maintainValueCmb.FormattingEnabled = true;
-            this.maintainValueCmb.Location = new System.Drawing.Point(3, 125);
+            this.maintainValueCmb.Location = new System.Drawing.Point(282, 42);
             this.maintainValueCmb.Name = "maintainValueCmb";
             this.maintainValueCmb.Size = new System.Drawing.Size(242, 30);
             this.maintainValueCmb.TabIndex = 5;
-            //this.maintainValueCmb.ValueMember = "Id";
             this.maintainValueCmb.TextChanged += new System.EventHandler(this.cmb_TextChanged);
             // 
             // noteTxt
             // 
-            this.noteTxt.Location = new System.Drawing.Point(3, 268);
+            this.noteTxt.Location = new System.Drawing.Point(0, 114);
             this.noteTxt.Name = "noteTxt";
-            this.noteTxt.Size = new System.Drawing.Size(242, 134);
+            this.noteTxt.Size = new System.Drawing.Size(984, 134);
             this.noteTxt.TabIndex = 7;
             this.noteTxt.Text = "";
             // 
@@ -288,7 +287,7 @@ namespace WinFormUI.Forms
             this.maintainTypeCmb.DisplayMember = "Name";
             this.maintainTypeCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.maintainTypeCmb.FormattingEnabled = true;
-            this.maintainTypeCmb.Location = new System.Drawing.Point(3, 48);
+            this.maintainTypeCmb.Location = new System.Drawing.Point(19, 42);
             this.maintainTypeCmb.Name = "maintainTypeCmb";
             this.maintainTypeCmb.Size = new System.Drawing.Size(242, 30);
             this.maintainTypeCmb.TabIndex = 4;
@@ -298,7 +297,7 @@ namespace WinFormUI.Forms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 97);
+            this.label6.Location = new System.Drawing.Point(282, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 26);
             this.label6.TabIndex = 15;
@@ -307,7 +306,7 @@ namespace WinFormUI.Forms
             // odoTxt
             // 
             this.odoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.odoTxt.Location = new System.Drawing.Point(3, 191);
+            this.odoTxt.Location = new System.Drawing.Point(571, 44);
             this.odoTxt.Name = "odoTxt";
             this.odoTxt.Size = new System.Drawing.Size(242, 28);
             this.odoTxt.TabIndex = 6;
@@ -316,60 +315,82 @@ namespace WinFormUI.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(3, 164);
+            this.label5.Location = new System.Drawing.Point(571, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 26);
             this.label5.TabIndex = 16;
             this.label5.Text = "Odo";
             // 
-            // label1
+            // flowLayoutPanelTransaction
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(868, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 26);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Tarih";
+            this.flowLayoutPanelTransaction.AutoScroll = true;
+            this.flowLayoutPanelTransaction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelTransaction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelTransaction.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelTransaction.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelTransaction.Name = "flowLayoutPanelTransaction";
+            this.flowLayoutPanelTransaction.Size = new System.Drawing.Size(1019, 219);
+            this.flowLayoutPanelTransaction.TabIndex = 0;
+            this.flowLayoutPanelTransaction.SizeChanged += new System.EventHandler(this.flowLayoutPanel1_SizeChanged);
             // 
-            // flowLayoutPanel1
+            // menuStrip
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(16);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(550, 489);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.menuStrip.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem,
+            this.settingsToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1019, 28);
+            this.menuStrip.TabIndex = 8;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // MainWindowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 582);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.splitContainerHeader);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
+            this.MinimumSize = new System.Drawing.Size(1025, 540);
             this.Name = "MainWindowForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindowForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainWindowForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainWindowForm_SizeChanged);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainerHeader.Panel1.ResumeLayout(false);
+            this.splitContainerHeader.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHeader)).EndInit();
+            this.splitContainerHeader.ResumeLayout(false);
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.splitContainerBody.Panel1.ResumeLayout(false);
+            this.splitContainerBody.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBody)).EndInit();
+            this.splitContainerBody.ResumeLayout(false);
             this.maintainFormPanel.ResumeLayout(false);
             this.maintainFormPanel.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -379,8 +400,8 @@ namespace WinFormUI.Forms
         private TextBox customerPhoneTxt;
         private ComboBox carTypesCmb;
         private ComboBox yearsCmb;
-        private SplitContainer splitContainer1;
-        private SplitContainer splitContainer2;
+        private SplitContainer splitContainerHeader;
+        private SplitContainer splitContainerBody;
         private Label label4;
         private Label label3;
         private Label label2;
@@ -393,10 +414,12 @@ namespace WinFormUI.Forms
         private ComboBox maintainTypeCmb;
         private ComboBox maintainValueCmb;
         private RichTextBox noteTxt;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanelTransaction;
         private Label label8;
-        private Label label1;
         private Panel headerPanel;
         private Panel maintainFormPanel;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem settingsToolStripMenuItem;
     }
 }

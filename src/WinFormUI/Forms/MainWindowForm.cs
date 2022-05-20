@@ -23,15 +23,17 @@ namespace WinFormUI.Forms
             _transactionService = transactionService;
 
             InitializeComponent();
+
             headerPanelLocationChange();
-            a(splitContainer2.Panel1);
-            splitContainer1.Panel1MinSize = headerPanel.Height;
+            splitContainerBody.Panel1MinSize = headerPanel.Height;
+            a(splitContainerBody.Panel1);
+            splitContainerHeader.Panel1MinSize = headerPanel.Height;
         }
         private void headerPanelLocationChange()
         {
             headerPanel.Location = new Point(
-   splitContainer1.Panel1.Width / 2 - headerPanel.Size.Width / 2,
-   splitContainer1.Panel1.Height / 2 - headerPanel.Size.Height / 2);
+   splitContainerHeader.Panel1.Width / 2 - headerPanel.Size.Width / 2,
+   splitContainerHeader.Panel1.Height / 2 - headerPanel.Size.Height / 2);
             headerPanel.Anchor = AnchorStyles.None;
         }
         private void MainWindowForm_Load(object sender, EventArgs e)
@@ -57,47 +59,17 @@ namespace WinFormUI.Forms
         {
             maintainTypeCmb.DataSource = _maintainTypeService.GetMaintainAsync().Result;
 
-            //maintainCmb.DisplayMember = "Name";
-            //maintainCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //maintainCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
             maintainTypeCmb.SelectedItem = null;
-
-            //maintainValueCmb.DisplayMember = "Value";
-            //maintainValueCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //maintainValueCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
         
         private void plateCmbFill()
         {
 
-            
-
-            //plateCmb.DisplayMember = "Plate";
-            //plateCmb.ValueMember = "Id";
             plateCmb.DataSource = _carService.GetCarAsync().Result;
-
-            //plateCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //plateCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
-
-
 
             carTypesCmb.DataSource = _carTypeService.GetCarTypeAsync().Result;
 
-            //carTypesCmb.DisplayMember = "Name";
-
-
-
-
-
-
             plateCmb.SelectedItem = null;
-
-            //carTypesCmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
-            //carTypesCmb.AutoCompleteSource = AutoCompleteSource.ListItems;
-
-            // yearTxt.DataBindings.Add("Text", plateCmb, "SelectedItem.Year");
-
         }
 
 
@@ -106,8 +78,9 @@ namespace WinFormUI.Forms
         private void transactionFill()
         {
             
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var transaction in _transactionService.GetTransactionByCarIdAsync((int)plateCmb.SelectedValue).Result)
+            flowLayoutPanelTransaction.Controls.Clear();
+            foreach (var transaction in _transactionService.GetTransactionByCarIdAsync((int)plateCmb.SelectedValue).Result.OrderByDescending(x => x.LastDate))
+            
             {
                 addTransaction(transaction);
             }
@@ -116,13 +89,13 @@ namespace WinFormUI.Forms
         private void addTransaction(Transaction transaction)
         {
             var control = new TransactionUserControl();
-            control.Size = new Size(flowLayoutPanel1.Width, control.Height);
+            control.Size = new Size(flowLayoutPanelTransaction.Size.Width-30, control.Height);
             control.Controls["maintainTxt"].Text = transaction.Maintain.MaintainType.Name;
             control.Controls["maintainValueTxt"].Text = transaction.Maintain.Value;
             control.Controls["odoTxt"].Text = transaction.LastOdo;
             control.Controls["lastTimePicker"].Text = transaction.LastDate.ToLongDateString();
             control.Controls["noteTxt"].Text = transaction.Note;
-            flowLayoutPanel1.Controls.Add(control);
+            flowLayoutPanelTransaction.Controls.Add(control);
 
         }
         private void plateCmb_TextChanged(object sender, EventArgs e)
@@ -138,8 +111,6 @@ namespace WinFormUI.Forms
                 yearsCmb.Enabled = false;
                 customerPhoneTxt.Text = car.CustomerPhone;
                 transactionFill();
-
-
             }
             else
             {
@@ -149,7 +120,7 @@ namespace WinFormUI.Forms
                 yearsCmb.SelectedItem = null;
                 yearsCmb.Enabled = true;
                 customerPhoneTxt.Text = string.Empty;
-                flowLayoutPanel1.Controls.Clear();
+                flowLayoutPanelTransaction.Controls.Clear();
             }
 
         }
@@ -243,11 +214,9 @@ namespace WinFormUI.Forms
                 maintainTypeCmb.SelectedItem = obj;
                 maintainTypeCmb.SelectionStart = Text.Length;
                 maintainValueCmb.DataSource = _maintainService.GetMaintainsByMaintainTypeIdAsync(obj.Id).Result;
-
             }
             else
             {
-
                 maintainValueCmb.DataSource = null;
                 maintainTypeCmb.SelectedItem = null;
             }
@@ -255,7 +224,7 @@ namespace WinFormUI.Forms
 
         private void MainWindowForm_SizeChanged(object sender, EventArgs e)
         {
-
+            splitContainerBody.SplitterDistance = maintainFormPanel.Size.Height;
         }
 
         private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
@@ -272,7 +241,26 @@ namespace WinFormUI.Forms
             maintainFormPanel.Location = new Point(
 panel.Width / 2 - maintainFormPanel.Size.Width / 2,
 panel.Height / 2 - maintainFormPanel.Size.Height / 2);
-            maintainFormPanel.Anchor = AnchorStyles.None;
+        }
+
+        private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
+        {
+            foreach (Control control in flowLayoutPanelTransaction.Controls)
+            {
+                control.Size = new Size(flowLayoutPanelTransaction.Width-30, control.Height);
+            }
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var helpForm = new HelpForm();
+            helpForm.ShowDialog();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var settingsForm = new SettingsForm();
+            settingsForm.ShowDialog();
         }
     }
 }

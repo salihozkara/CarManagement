@@ -33,7 +33,7 @@
             this.maintainValueTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lastTimePicker = new System.Windows.Forms.TextBox();
-            this.noteTxt = new System.Windows.Forms.RichTextBox();
+            this.noteTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // odoTxt
@@ -78,7 +78,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(12, 147);
+            this.label1.Location = new System.Drawing.Point(22, 140);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 20);
@@ -98,18 +98,20 @@
             // 
             // noteTxt
             // 
-            this.noteTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.noteTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.noteTxt.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.noteTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.noteTxt.Enabled = false;
             this.noteTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.noteTxt.Location = new System.Drawing.Point(0, 46);
+            this.noteTxt.Location = new System.Drawing.Point(10, 60);
             this.noteTxt.Margin = new System.Windows.Forms.Padding(2);
+            this.noteTxt.Multiline = true;
             this.noteTxt.Name = "noteTxt";
             this.noteTxt.ReadOnly = true;
-            this.noteTxt.Size = new System.Drawing.Size(831, 121);
+            this.noteTxt.Size = new System.Drawing.Size(813, 93);
             this.noteTxt.TabIndex = 33;
-            this.noteTxt.Text = "";
+            this.noteTxt.TextChanged += new System.EventHandler(this.noteTxt_TextChanged);
             // 
             // TransactionUserControl
             // 
@@ -122,7 +124,10 @@
             this.Controls.Add(this.maintainTxt);
             this.Controls.Add(this.odoTxt);
             this.Name = "TransactionUserControl";
-            this.Size = new System.Drawing.Size(833, 169);
+            this.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.Size = new System.Drawing.Size(833, 155);
+            this.Load += new System.EventHandler(this.TransactionUserControl_Load);
+            this.SizeChanged += new System.EventHandler(this.TransactionUserControl_SizeChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +139,6 @@
         private TextBox maintainValueTxt;
         private Label label1;
         private TextBox lastTimePicker;
-        private RichTextBox noteTxt;
+        private TextBox noteTxt;
     }
 }
