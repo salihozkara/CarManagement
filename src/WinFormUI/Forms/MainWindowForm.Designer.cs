@@ -375,6 +375,7 @@ namespace WinFormUI.Forms
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainWindowForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainWindowForm_SizeChanged);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainWindowForm_HelpRequested);
             this.splitContainerHeader.Panel1.ResumeLayout(false);
             this.splitContainerHeader.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHeader)).EndInit();

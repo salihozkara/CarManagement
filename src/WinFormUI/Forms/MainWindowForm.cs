@@ -264,5 +264,11 @@ panel.Height / 2 - maintainFormPanel.Size.Height / 2);
             var settingsForm = new SettingsForm();
             settingsForm.ShowDialog();
         }
+
+        private void MainWindowForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            var helpForm = new HelpForm();
+            helpForm.ShowDialog();
+        }
     }
 }
