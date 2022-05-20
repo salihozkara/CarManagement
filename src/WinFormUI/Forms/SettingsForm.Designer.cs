@@ -71,7 +71,7 @@
             // 
             // buttonSavePassword
             // 
-            this.buttonSavePassword.Location = new System.Drawing.Point(121, 200);
+            this.buttonSavePassword.Location = new System.Drawing.Point(124, 199);
             this.buttonSavePassword.Name = "buttonSavePassword";
             this.buttonSavePassword.Size = new System.Drawing.Size(94, 29);
             this.buttonSavePassword.TabIndex = 4;

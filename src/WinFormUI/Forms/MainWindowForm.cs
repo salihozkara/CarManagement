@@ -88,13 +88,8 @@ namespace WinFormUI.Forms
         }
         private void addTransaction(Transaction transaction)
         {
-            var control = new TransactionUserControl();
-            control.Size = new Size(flowLayoutPanelTransaction.Size.Width-30, control.Height);
-            control.Controls["maintainTxt"].Text = transaction.Maintain.MaintainType.Name;
-            control.Controls["maintainValueTxt"].Text = transaction.Maintain.Value;
-            control.Controls["odoTxt"].Text = transaction.LastOdo;
-            control.Controls["lastTimePicker"].Text = transaction.LastDate.ToLongDateString();
-            control.Controls["noteTxt"].Text = transaction.Note;
+            var control = new TransactionUserControl(transaction);
+            control.Size = new Size(flowLayoutPanelTransaction.Size.Width - 30, control.Height);
             flowLayoutPanelTransaction.Controls.Add(control);
 
         }
@@ -186,12 +181,19 @@ namespace WinFormUI.Forms
 
             _transactionService.AddTransactionAsync(transaction).Wait();
             FormClear();
+            var card = new TransactionUserControl(transaction);
+            Bitmap bitmap = new Bitmap(card.Width, card.Height);
+            card.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
+            //var formCard = new FormCard(bitmap);
+            //formCard.ShowDialog();
+            card.Print();
 
 
         }
         private void FormClear()
         {
             plateCmbFill();
+            maintainCmbFill();
             plateCmb.SelectedItem = null;
             carTypesCmb.SelectedItem = null;
             carTypesCmb.Text = string.Empty;

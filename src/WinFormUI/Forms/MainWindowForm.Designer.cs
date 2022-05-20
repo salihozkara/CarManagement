@@ -148,7 +148,7 @@ namespace WinFormUI.Forms
             this.headerPanel.Controls.Add(this.plakaLbl);
             this.headerPanel.Location = new System.Drawing.Point(166, 1);
             this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Size = new System.Drawing.Size(671, 68);
+            this.headerPanel.Size = new System.Drawing.Size(681, 68);
             this.headerPanel.TabIndex = 10;
             // 
             // label4
@@ -371,7 +371,7 @@ namespace WinFormUI.Forms
             this.MinimumSize = new System.Drawing.Size(1025, 540);
             this.Name = "MainWindowForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainWindowForm";
+            this.Text = "Car Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainWindowForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainWindowForm_SizeChanged);
