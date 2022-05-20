@@ -27,7 +27,5 @@ namespace WinFormUI.Forms
         {
             usernameLbl.Text = AuthHelper.GetUserName();
         }
-
-
     }
 }

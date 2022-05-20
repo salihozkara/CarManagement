@@ -41,42 +41,52 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 90);
+            this.label1.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(79, 238);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.Size = new System.Drawing.Size(189, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Eski şifre:";
             // 
             // textBoxOldPassword
             // 
-            this.textBoxOldPassword.Location = new System.Drawing.Point(124, 87);
+            this.textBoxOldPassword.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxOldPassword.Location = new System.Drawing.Point(287, 230);
+            this.textBoxOldPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxOldPassword.Name = "textBoxOldPassword";
-            this.textBoxOldPassword.Size = new System.Drawing.Size(193, 27);
+            this.textBoxOldPassword.Size = new System.Drawing.Size(240, 38);
             this.textBoxOldPassword.TabIndex = 1;
             this.textBoxOldPassword.UseSystemPasswordChar = true;
             // 
             // textBoxNewPassword
             // 
-            this.textBoxNewPassword.Location = new System.Drawing.Point(124, 133);
+            this.textBoxNewPassword.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxNewPassword.Location = new System.Drawing.Point(287, 320);
+            this.textBoxNewPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNewPassword.Name = "textBoxNewPassword";
-            this.textBoxNewPassword.Size = new System.Drawing.Size(193, 27);
+            this.textBoxNewPassword.Size = new System.Drawing.Size(240, 38);
             this.textBoxNewPassword.TabIndex = 3;
             this.textBoxNewPassword.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 136);
+            this.label2.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(79, 328);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.Size = new System.Drawing.Size(189, 30);
             this.label2.TabIndex = 2;
             this.label2.Text = "Yeni şifre:";
             // 
             // buttonSavePassword
             // 
-            this.buttonSavePassword.Location = new System.Drawing.Point(124, 199);
+            this.buttonSavePassword.Font = new System.Drawing.Font("DroidSansMono Nerd Font", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSavePassword.Location = new System.Drawing.Point(403, 404);
+            this.buttonSavePassword.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSavePassword.Name = "buttonSavePassword";
-            this.buttonSavePassword.Size = new System.Drawing.Size(94, 29);
+            this.buttonSavePassword.Size = new System.Drawing.Size(124, 50);
             this.buttonSavePassword.TabIndex = 4;
             this.buttonSavePassword.Text = "Kaydet";
             this.buttonSavePassword.UseVisualStyleBackColor = true;
@@ -84,19 +94,22 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(135, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(204, 45);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 55);
+            this.pictureBox1.Size = new System.Drawing.Size(182, 136);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
             // SettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AcceptButton = this.buttonSavePassword;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 284);
+            this.ClientSize = new System.Drawing.Size(618, 512);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonSavePassword);
             this.Controls.Add(this.textBoxNewPassword);
@@ -104,6 +117,7 @@
             this.Controls.Add(this.textBoxOldPassword);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
